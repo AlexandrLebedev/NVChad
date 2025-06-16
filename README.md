@@ -1,9 +1,12 @@
-**This repo is supposed to used as config by NvChad users!**
+**Created a repository to store my settings for NVchad**
 
-- The main nvchad repo (NvChad/NvChad) is used as a plugin by this repo.
-- So you just import its modules , like `require "nvchad.options" , require "nvchad.mappings"`
-- So you can delete the .git from this repo ( when you clone it locally ) or fork it :)
+Supported technologies: 
+- vue.js
+- javascript
+- css
 
-# Credits
+Still needs some fine-tuning.
 
-1) Lazyvim starter https://github.com/LazyVim/starter as nvchad's starter was inspired by Lazyvim's . It made a lot of things easier!
+All of this works with NVChad version 2.5.
+
+To install an empty NVChad, you can use https://nvchad.com/docs/quickstart/install documentation.
