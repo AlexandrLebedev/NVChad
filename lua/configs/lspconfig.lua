@@ -1,59 +1,32 @@
 local configs = require "nvchad.configs.lspconfig"
-
-local on_attach = configs.on_attach
-local on_init = configs.on_init
-local capabilities = configs.capabilities
-
 local lspconfig = require "lspconfig"
 
--- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "gopls", "gradle_ls" }
+-- 1. Настраиваем простые серверы (HTML, CSS) с дефолтными настройками
+local servers = { "html", "cssls", "intelephense" }
 
-local function organize_imports()
-  local params = {
-    command = "_typescript.organizeImports",
-    arguments = { vim.api.nvim_buf_get_name(0) },
-    title = "",
+for _, server_name in ipairs(servers) do
+  lspconfig[server_name].setup {
+    on_attach = configs.on_attach, -- Используем стандартный on_attach от NvChad
+    capabilities = configs.capabilities, -- И стандартные capabilities
   }
-
-  local clients = vim.lsp.get_clients { name = "ts_ls" }
-  if #clients == 0 then
-    vim.notify("No ts_ls client found", vim.log.levels.ERROR)
-    return
-  end
-  local client = clients[1]
-  client:exec_cmd(params)
-  vim.notify("Imports sorted", vim.log.levels.INFO)
 end
 
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    commands = {
-      OrganizeImports = {
-        organize_imports,
-        description = "Organize Imports",
-      },
-    },
-    settings = {
-      gopls = {
-        completeUnimported = true,
-        usePlaceholders = true,
-        analyses = {
-          unusedparams = true,
-        },
-      },
-    },
-  }
-  lspconfig.prismals.setup {}
-  lspconfig.volar.setup {
-    on_attach = on_attach,
-    filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-    init_options = {
-      vue = {
-        hybridMode = false,
-      },
-    },
-  }
-end-- read :h vim.lsp.config for changing options of lsp servers 
+-- 2. Настраиваем PHP. Нужно выбрать ОДИН сервер или настроить оба по отдельности.
+--    Самый популярный и простой вариант - intelephense.
+lspconfig.intelephense.setup {
+  on_attach = configs.on_attach,
+  capabilities = configs.capabilities,
+  -- filetypes уже определены по умолчанию для intelephense, но можно указать явно
+  filetypes = { "php" },
+  -- Здесь могут быть специфичные настройки для intelephense
+}
+
+-- Если очень хочется И phpactor И intelephense, их нужно настраивать как два разных сервера.
+-- Но обычно это избыточно и может привести к конфликтам. Выберите один.
+-- Пример для phpactor:
+-- lspconfig.phpactor.setup {
+--   on_attach = configs.on_attach,
+--   capabilities = configs.capabilities,
+-- }
+
+-- read :h vim.lsp.config for changing options of lsp servers

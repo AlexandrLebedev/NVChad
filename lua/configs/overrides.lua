@@ -2,6 +2,7 @@ local M = {}
 
 M.treesitter = {
   ensure_installed = {
+    "php",
     "vim",
     "lua",
     "html",
@@ -35,6 +36,10 @@ M.mason = {
     "node-debug2-adapter",
     "gopls",
     "gradle_ls",
+    "emmet-language-server",
+    "emmet-ls",
+    "sonarlint-language-server",
+    "intelephense",
   },
 }
 

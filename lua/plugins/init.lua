@@ -1,10 +1,10 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
-    config = function ()
+    event = "BufWritePre", -- uncomment for format on save
+    config = function()
       require "configs.conform"
-    end
+    end,
   },
   {
     "christoomey/vim-tmux-navigator",
@@ -44,6 +44,7 @@ return {
         "gopls",
         "js-debug-adapter",
         "typescript-language-server",
+        "sonarlint-language-server",
       },
     },
   },
@@ -59,6 +60,7 @@ return {
         "typescript",
         "javascript",
         "go",
+        "php",
       },
     },
   },
