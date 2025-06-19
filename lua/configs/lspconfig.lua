@@ -1,31 +1,59 @@
 local configs = require "nvchad.configs.lspconfig"
 local lspconfig = require "lspconfig"
+local async = require "plenary.async"
+local notify = require("notify").async
 
--- 1. Настраиваем простые серверы (HTML, CSS) с дефолтными настройками
-local servers = { "html", "cssls", "intelephense" }
+local servers = { "html", "cssls" }
 
 for _, server_name in ipairs(servers) do
-    lspconfig[server_name].setup {
-        on_attach = configs.on_attach, -- Используем стандартный on_attach от NvChad
-        capabilities = configs.capabilities, -- И стандартные capabilities
-    }
+  lspconfig[server_name].setup {
+    on_attach = configs.on_attach, -- Используем стандартный on_attach от NvChad
+    capabilities = configs.capabilities, -- И стандартные capabilities
+  }
 end
 
 -- 2. Настраиваем PHP. Нужно выбрать ОДИН сервер или настроить оба по отдельности.
 --    Самый популярный и простой вариант - intelephense.
 lspconfig.intelephense.setup {
-    on_attach = configs.on_attach,
-    capabilities = configs.capabilities,
-    filetypes = { "php" },
+  on_attach = configs.on_attach,
+  capabilities = configs.capabilities,
+  filetypes = { "php" },
+  on_new_config = function(new_config, root_dir)
+    local config_file = root_dir .. "/intelephense.json"
+    local file = io.open(config_file, "r")
+    if not file then
+      return
+    end
+
+    vim.notify(
+      "Найден intelephense.json, загружаю настройки...",
+      vim.log.levels.INFO,
+      { title = "LSP" }
+    )
+
+    async.run(function()
+      notify("Intelephense.json found, loading settings...").events.close()
+    end)
+
+    local content = file:read "*a"
+    file:close()
+
+    local ok, decoded = pcall(vim.fn.json_decode, content)
+    if ok then
+      new_config.settings.intelephense = vim.tbl_deep_extend("force", new_config.settings.intelephense or {}, decoded)
+    else
+      vim.notify("Ошибка парсинга intelephense.json!", vim.log.levels.ERROR, { title = "LSP" })
+    end
+  end,
 }
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "php",
-    callback = function()
-        vim.g.PHP_default_indenting = 4
-        vim.bo.tabstop = 4
-        vim.bo.shiftwidth = 4
-    end,
+  pattern = "php",
+  callback = function()
+    vim.g.PHP_default_indenting = 4
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+  end,
 })
 
 -- Если очень хочется И phpactor И intelephense, их нужно настраивать как два разных сервера.

@@ -7,6 +7,20 @@ return {
     end,
   },
   {
+    "nvzone/typr",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = { "Typr", "TyprStats" },
+  },
+  {
+    "rcarriga/nvim-notify",
+    opts = {
+      timeout = 3000,
+      background_colour = "#1e222a",
+      max_height = 15,
+    },
+  },
+  {
     "christoomey/vim-tmux-navigator",
     lazy = false,
     cmd = {
