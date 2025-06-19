@@ -16,10 +16,17 @@ end
 lspconfig.intelephense.setup {
     on_attach = configs.on_attach,
     capabilities = configs.capabilities,
-    -- filetypes уже определены по умолчанию для intelephense, но можно указать явно
     filetypes = { "php" },
-    -- Здесь могут быть специфичные настройки для intelephense
 }
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "php",
+    callback = function()
+        vim.g.PHP_default_indenting = 4
+        vim.bo.tabstop = 4
+        vim.bo.shiftwidth = 4
+    end,
+})
 
 -- Если очень хочется И phpactor И intelephense, их нужно настраивать как два разных сервера.
 -- Но обычно это избыточно и может привести к конфликтам. Выберите один.
