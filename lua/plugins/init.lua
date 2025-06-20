@@ -59,6 +59,8 @@ return {
         "js-debug-adapter",
         "typescript-language-server",
         "sonarlint-language-server",
+        "vue-language-server",
+        "intelephense",
       },
     },
   },

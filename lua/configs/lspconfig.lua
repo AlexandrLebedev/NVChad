@@ -3,17 +3,39 @@ local lspconfig = require "lspconfig"
 local async = require "plenary.async"
 local notify = require("notify").async
 
-local servers = { "html", "cssls" }
+local servers = { "html", "cssls", "jsonls", "clangd" }
 
 for _, server_name in ipairs(servers) do
   lspconfig[server_name].setup {
-    on_attach = configs.on_attach, -- Используем стандартный on_attach от NvChad
-    capabilities = configs.capabilities, -- И стандартные capabilities
+    on_attach = configs.on_attach,
+    capabilities = configs.capabilities,
   }
 end
 
--- 2. Настраиваем PHP. Нужно выбрать ОДИН сервер или настроить оба по отдельности.
---    Самый популярный и простой вариант - intelephense.
+---
+
+lspconfig.eslint.setup {
+  on_attach = configs.on_attach,
+  capabilities = configs.capabilities,
+  cmd = { "eslint_d", "--stdin" },
+  settings = {},
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+}
+
+---
+
+lspconfig.volar.setup {
+  on_attach = configs.on_attach,
+  capabilities = configs.capabilities,
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+  init_options = {
+    vue = {
+      hybridMode = false,
+    },
+  },
+}
+
+-- Настройка PHP (intelephense)
 lspconfig.intelephense.setup {
   on_attach = configs.on_attach,
   capabilities = configs.capabilities,
@@ -55,13 +77,5 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.shiftwidth = 4
   end,
 })
-
--- Если очень хочется И phpactor И intelephense, их нужно настраивать как два разных сервера.
--- Но обычно это избыточно и может привести к конфликтам. Выберите один.
--- Пример для phpactor:
--- lspconfig.phpactor.setup {
---   on_attach = configs.on_attach,
---   capabilities = configs.capabilities,
--- }
 
 -- read :h vim.lsp.config for changing options of lsp servers
