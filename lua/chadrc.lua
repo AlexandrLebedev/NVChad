@@ -22,6 +22,16 @@ M.ui = {
   statusline = {
     theme = "vscode_colored",
   },
+  -- Добавил часы к табам что бы легче было смотреть время в полноэкранном режиме
+  tabufline = {
+    order = { "treeOffset", "buffers", "tabs", "clock", "btns" },
+
+    modules = {
+      clock = function()
+        return "  " .. os.date "%H:%M" .. " "
+      end,
+    },
+  },
   hl_override = {
     Comment = { italic = true },
     ["@comment"] = { italic = true },

@@ -55,3 +55,6 @@ If you're working locally and need to define specific PHP rules (e.g., for Intel
 - Vue, JS, and CSS integrations are currently in progress.
 
 >_Further instructions in development
+
+Commands for help: 
+- :h nvui
