@@ -1,0 +1,17 @@
+{
+  "environment": {
+    "phpVersion": "7.4", 
+    "shortOpenTag": false 
+  },
+  "files": {
+    "exclude": [
+      "**/.git/**",
+      "**/.svn/**",
+      "**/.hg/**",
+      "**/node_modules/**",
+      "**/runtime/**",
+      "**/web/assets/**",
+      "**/console/migrations/**.php"
+    ]
+  }
+}
