@@ -58,7 +58,7 @@ If you're working locally and need to define specific PHP rules (e.g., for Intel
 This build also includes a setting for [vista.vim](https://github.com/liuchengxu/vista.vim) that allows you to view the methods of the file being developed.  
 In order for it to work correctly, you need to specify the use of nvim_lsp for the language you are using in the ```/lua/configs/vista.lua file```.  
 You can follow the same example that is in the file itself. In the future, as my development progresses, I will add more languages as needed.  
-For information about this module and its available commands for configuration, you can call the command ```:echo g:vista#executives```.  
+For information about this module and its available commands for configuration, you can call the command ```:help vista-commands```.  
 
 You also need to install ctags.
 Here's how to do it:
