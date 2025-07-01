@@ -1,4 +1,6 @@
 require "nvchad.mappings"
+local async = require "plenary.async"
+local notify = require("notify").async
 
 -- add yours here
 
@@ -16,4 +18,29 @@ local function toggle_vista()
 end
 
 map("n", "<leader>v", toggle_vista, { desc = "Toggle Vista" })
+
+map("n", "<Left>", function()
+  async.run(function()
+    notify("Use h", "error", { title = "Navigation" })
+  end)
+end, { desc = "Use h" })
+
+map("n", "<Right>", function()
+  async.run(function()
+    notify("Use l", "error", { title = "Navigation" })
+  end)
+end, { desc = "Use l" })
+
+map("n", "<Up>", function()
+  async.run(function()
+    notify("Use k", "error", { title = "Navigation" })
+  end)
+end, { desc = "Use k" })
+
+map("n", "<Down>", function()
+  async.run(function()
+    notify("Use j", "error", { title = "Navigation" })
+  end)
+end, { desc = "Use j" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
