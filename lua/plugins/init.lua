@@ -13,6 +13,13 @@ return {
     cmd = { "Typr", "TyprStats" },
   },
   {
+    "liuchengxu/vista.vim",
+    cmd = { "Vista" },
+    config = function()
+      require "configs.vista"
+    end,
+  },
+  {
     "rcarriga/nvim-notify",
     opts = {
       timeout = 3000,
