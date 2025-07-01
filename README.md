@@ -54,8 +54,6 @@ If you're working locally and need to define specific PHP rules (e.g., for Intel
 - PHP setup is ready to use.
 - CSS integrations are currently in progress.
 
->_Further instructions in development
-
 ## Vista.vim
 This build also includes a setting for [vista.vim](https://github.com/liuchengxu/vista.vim) that allows you to view the methods of the file being developed.  
 In order for it to work correctly, you need to specify the use of nvim_lsp for the language you are using in the ```/lua/configs/vista.lua file```.  
@@ -78,6 +76,8 @@ Without ctags, it will not work, so you will need to install it as described abo
 If you are interested in digging deeper and seeing what it is, you can go to github [ctags](https://github.com/universal-ctags/ctags/).  
 I also reassigned the key combination ```<leader> + v```.
 It calls the ```:Vista``` command to open the file tree and ```:Vista!``` when pressed again to close it.
+
+>_Further instructions in development
 
 ## Commands for help: 
 - :h nvui
