@@ -53,10 +53,6 @@ lspconfig.intelephense.setup {
       { title = "LSP" }
     )
 
-    async.run(function()
-      notify("Intelephense.json found, loading settings...").events.close()
-    end)
-
     local content = file:read "*a"
     file:close()
 
