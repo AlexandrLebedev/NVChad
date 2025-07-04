@@ -1,7 +1,5 @@
 local configs = require "nvchad.configs.lspconfig"
 local lspconfig = require "lspconfig"
-local async = require "plenary.async"
-local notify = require("notify").async
 
 local servers = { "html", "cssls", "jsonls", "clangd" }
 
