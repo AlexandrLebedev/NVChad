@@ -6,12 +6,12 @@ OS: macOS, Ubuntu
 
 ##  Status of Language Support
 
-| Technology | Status       |
-|------------|--------------|
-| PHP        | ✅ Ready     |
-| Vue.js     | ✅ Ready     |
-| JavaScript | ✅ Ready     |
-| CSS        | 🚧 In Process |
+| Technology | Status        | Debuging          |
+|------------|---------------|-------------------|
+| PHP        | ✅ Ready      | 🔎 Being tested   |
+| Vue.js     | ✅ Ready      | ❌ Not configured | 
+| JavaScript | ✅ Ready      | ❌ Not configured |
+| CSS        | 🚧 In Process | ❌ Not configured |
 
 > _Some parts of the configuration still require fine-tuning._
 
@@ -76,6 +76,9 @@ Without ctags, it will not work, so you will need to install it as described abo
 If you are interested in digging deeper and seeing what it is, you can go to github [ctags](https://github.com/universal-ctags/ctags/).  
 I also reassigned the key combination ```<leader> + v```.
 It calls the ```:Vista``` command to open the file tree and ```:Vista!``` when pressed again to close it.
+
+## Debuging for php
+>_Instructions in process
 
 >_Further instructions in development
 
