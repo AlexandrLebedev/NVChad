@@ -11,7 +11,7 @@ OS: macOS, Ubuntu
 | PHP        | ✅ Ready      | 🔎 Being tested   |
 | Vue.js     | ✅ Ready      | ❌ Not configured | 
 | JavaScript | ✅ Ready      | ❌ Not configured |
-| CSS        | 🚧 In Process | ❌ Not configured |
+| CSS        | 🚧 In Process |                   |
 
 > _Some parts of the configuration still require fine-tuning._
 
