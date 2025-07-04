@@ -51,6 +51,17 @@ return {
     end,
   },
   { "nvim-neotest/nvim-nio" },
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      { "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
+      { "theHamsta/nvim-dap-virtual-text" },
+      { "nvim-telescope/telescope-dap.nvim" },
+    },
+    config = function()
+      require "configs.debug"
+    end,
+  },
   -- Установка по умолчанию каких то либо плагинов
   {
     "williamboman/mason.nvim",
@@ -68,6 +79,7 @@ return {
         "sonarlint-language-server",
         "vue-language-server",
         "intelephense",
+        "php-debug-adapter",
       },
     },
   },

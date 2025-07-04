@@ -1,7 +1,5 @@
 local configs = require "nvchad.configs.lspconfig"
 local lspconfig = require "lspconfig"
-local async = require "plenary.async"
-local notify = require("notify").async
 
 local servers = { "html", "cssls", "jsonls", "clangd" }
 
@@ -52,10 +50,6 @@ lspconfig.intelephense.setup {
       vim.log.levels.INFO,
       { title = "LSP" }
     )
-
-    async.run(function()
-      notify("Intelephense.json found, loading settings...").events.close()
-    end)
 
     local content = file:read "*a"
     file:close()
