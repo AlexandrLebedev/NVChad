@@ -1,7 +1,7 @@
 local configs = require "nvchad.configs.lspconfig"
 local lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls", "jsonls", "clangd" }
+local servers = { "html", "cssls", "jsonls", "clangd", "gopls" }
 
 for _, server_name in ipairs(servers) do
   lspconfig[server_name].setup {
