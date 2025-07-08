@@ -77,6 +77,16 @@ If you are interested in digging deeper and seeing what it is, you can go to git
 I also reassigned the key combination ```<leader> + v```.
 It calls the ```:Vista``` command to open the file tree and ```:Vista!``` when pressed again to close it.
 
+## Copilot  
+
+Added Copilot support.  
+
+The repository that was connected - [Copilot repository](https://github.com/github/copilot.vim).  
+To enable Copilot, you must first install it by entering the command ```:Copilot setup```.  
+During setup, Copilot will generate a code that you will need to enter on the connection page (a browser will open and ask you to connect).  
+And Copilot begin to work.  
+**Note**: Copilot requires Node.js version > v20 to work.  
+
 ## Debuging for php
 >_Instructions in process
 
