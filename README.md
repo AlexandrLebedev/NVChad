@@ -87,6 +87,21 @@ During setup, Copilot will generate a code that you will need to enter on the co
 And Copilot begin to work.  
 **Note**: Copilot requires Node.js version > v20 to work.  
 
+## LazyGit
+
+Currently, I have set up a configuration where lazygit can be called via the ```<leader>lg``` combination in the currently active NvChad session.  
+The problem encountered is this:   
+1) I would like to configure LazyGit so that when opening a file via the ```(o)``` command, LazyGit closes and opens the file that was selected in it in the current NvChad session.  
+
+**Note:** to make the call work, LazyGit itself should be installed earlier, as it is a separate terminal program.  
+
+Installation and a more detailed description of what it is can be seen at this link - [LazyGit](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#homebrew).  
+
+> *If you have time with help with LazyGit then I would be very happy.*
+> *Because I don't quite understand how exactly to do the customization I*
+> *described above.  For now, I will not go directly into LazyGit, but*
+> *will continue to refine my configuration.*
+
 ## Debuging for php
 >_Instructions in process
 
