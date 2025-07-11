@@ -28,6 +28,14 @@ local function toggle_vista()
   end
 end
 
+local function toggle_dadbod()
+  if vim.fn.bufwinid "dbui" ~= -1 then
+    vim.cmd "DBUIClose"
+  else
+    vim.cmd "DBUI"
+  end
+end
+
 ------------------------------------------------------------------
 -- Основные горячие клавиши
 ------------------------------------------------------------------
@@ -36,6 +44,7 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 map("n", "<leader>v", toggle_vista, { desc = "Toggle Vista" })
+map("n", "<leader>sd", toggle_dadbod, { desc = "Toggle Vista" })
 
 map("n", "<Left>", function()
   async.run(function()
