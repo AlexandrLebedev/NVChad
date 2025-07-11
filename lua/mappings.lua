@@ -44,7 +44,7 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 map("n", "<leader>v", toggle_vista, { desc = "Toggle Vista" })
-map("n", "<leader>sd", toggle_dadbod, { desc = "Toggle Vista" })
+map("n", "<leader>sd", toggle_dadbod, { desc = "Toggle DBUI" })
 
 map("n", "<Left>", function()
   async.run(function()
