@@ -21,6 +21,9 @@ OS: macOS, Ubuntu
 
 To install a clean NVChad setup, follow the official [installation guide](https://nvchad.com/docs/quickstart/install).
 
+If you want to use my configuration, do all the presets described in the “Pre-requisites” from the official documentation and run the command:  
+```git clone https://github.com/AlexandrLebedev/NVChad ~/.config/nvim && nvim```
+
 ---
 
 ##  PHP Environment Configuration
