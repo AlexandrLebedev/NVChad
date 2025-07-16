@@ -20,18 +20,35 @@ lspconfig.eslint.setup {
   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 }
 
----
-
-lspconfig.volar.setup {
+lspconfig.ts_ls.setup {
   on_attach = configs.on_attach,
   capabilities = configs.capabilities,
-  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
   init_options = {
-    vue = {
-      hybridMode = false,
+    plugins = {
+      {
+        name = "@vue/typescript-plugin",
+        -- locaton = "/usr/local/lib/node_modules/@vue/language-server",
+        location = os.getenv "HOME"
+          .. "/.local/share/nvim/mason/packages/vue-language-server/node_modules/@vue/language-server",
+        languages = { "vue" },
+      },
     },
   },
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 }
+
+---
+
+-- lspconfig.volar.setup {
+--   on_attach = configs.on_attach,
+--   capabilities = configs.capabilities,
+--   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+--   init_options = {
+--     vue = {
+--       hybridMode = false,
+--     },
+--   },
+-- }
 
 -- Настройка PHP (intelephense)
 lspconfig.intelephense.setup {

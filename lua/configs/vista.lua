@@ -6,6 +6,7 @@ vim.g.vista_executive_for = {
   lua = "nvim_lsp",
   json = "nvim_lsp",
   yml = "nvim_lsp",
+  ts = "nvim_lsp",
   -- Another uses languages
 }
 

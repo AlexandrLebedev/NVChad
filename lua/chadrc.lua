@@ -19,6 +19,7 @@ M.nvdash = {
 }
 
 M.ui = {
+  theme = "Carbonfox",
   statusline = {
     theme = "vscode_colored",
   },
