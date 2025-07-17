@@ -3,6 +3,7 @@ local async = require "plenary.async"
 local notify = require("notify").async
 local dap = require "dap"
 local dapui = require "dapui"
+
 -- add yours here
 
 local map = vim.keymap.set
@@ -15,6 +16,10 @@ local dapui_widget = require "dap.ui.widgets"
 local function terminate_and_cleanup()
   dapui.close()
   dap.terminate()
+
+  local virtual_text = require "nvim-dap-virtual-text/virtual_text"
+  virtual_text.clear_virtual_text()
+
   async.run(function()
     notify("DapUI is close (event terminated)", "info", { title = "Dap ui" })
   end)
