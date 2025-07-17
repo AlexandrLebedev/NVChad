@@ -1,25 +1,26 @@
 return {
-  {
-    "kristijanhusak/vim-dadbod-ui",
-    dependencies = {
-      { "tpope/vim-dadbod", lazy = true },
-      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
-    },
-    cmd = {
-      "DBUI",
-      "DBUIToggle",
-      "DBUIAddConnection",
-      "DBUIFindBuffer",
-    },
-    init = function()
-      vim.g.db_adapter_custom_command = {
-        -- TODO Make dinamyc connect
-        mysql = "docker-compose exec -T mysql",
-      }
+  -- TODO: need to understand how it works and set more setting for comfortable work
+  -- {
+  --   "kristijanhusak/vim-dadbod-ui",
+  --   dependencies = {
+  --     { "tpope/vim-dadbod", lazy = true },
+  --     { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+  --   },
+  --   cmd = {
+  --     "DBUI",
+  --     "DBUIToggle",
+  --     "DBUIAddConnection",
+  --     "DBUIFindBuffer",
+  --   },
+  --   init = function()
+  --     vim.g.db_adapter_custom_command = {
+  --       -- TODO Make dinamyc connect
+  --       mysql = "docker-compose exec -T mysql",
+  --     }
 
-      vim.g.db_ui_use_nerd_fonts = 1
-    end,
-  },
+  --     vim.g.db_ui_use_nerd_fonts = 1
+  --   end,
+  -- },
   {
     "kdheepak/lazygit.nvim",
     cmd = {
