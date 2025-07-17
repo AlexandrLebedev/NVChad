@@ -22,6 +22,14 @@ return {
   --   end,
   -- },
   {
+    "hrsh7th/nvim-cmp",
+    opts = {
+      sources = {
+        name = "codeium",
+      },
+    },
+  },
+  {
     "kdheepak/lazygit.nvim",
     cmd = {
       "LazyGit",

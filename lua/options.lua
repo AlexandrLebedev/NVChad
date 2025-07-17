@@ -1,12 +1,21 @@
 require "nvchad.options"
+local cmp = require "cmp"
 
--- Настройки системных выводов насколько я понял
-local signs = { Error = " ", Warn = " ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
--- add yours here!
+cmp.setup {
+  sources = {
+    { name = "nvim_lsp" },
+  },
+}
 
--- local o = vim.o
--- o.cursorlineopt ='both' -- to enable cursorline!
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+require("lspconfig").clangd.setup {
+  capabilities = capabilities,
+}
+
+-- Code for disable lsp ppup menu for autocomplete
+-- require("lspconfig")["gopls"].setup {
+--   on_attach = function(client)
+--     client.server_capabilities.completionProvider = false
+--   end,
+-- }
