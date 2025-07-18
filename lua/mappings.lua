@@ -3,6 +3,7 @@ local async = require "plenary.async"
 local notify = require("notify").async
 local dap = require "dap"
 local dapui = require "dapui"
+local gitsigns = require "gitsigns"
 
 -- add yours here
 
@@ -10,7 +11,7 @@ local map = vim.keymap.set
 local dapui_widget = require "dap.ui.widgets"
 
 ------------------------------------------------------------------
--- Дополнительные функции
+-- Additional features
 ------------------------------------------------------------------
 
 local function terminate_and_cleanup()
@@ -42,7 +43,7 @@ local function toggle_dadbod()
 end
 
 ------------------------------------------------------------------
--- Основные горячие клавиши
+-- Main hotkeys
 ------------------------------------------------------------------
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -82,10 +83,10 @@ end, { desc = "Use j" })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 ------------------------------------------------------------------
--- Горячие клавиши для отладчика (DAP)
+-- Hotkeys for debuging (DAP)
 ------------------------------------------------------------------
 
--- Основные действия
+-- Main actions
 map("n", "<leader>dsc", dap.continue, { desc = "DAP: Continue" })
 map("n", "<leader>dsso", dap.step_over, { desc = "DAP: Step Over" })
 map("n", "<leader>dssi", dap.step_into, { desc = "DAP: Step Into" })
@@ -102,7 +103,7 @@ map("n", "<leader>lp", function()
   dap.set_breakpoint(nil, nil, vim.fn.input "Log point message: ")
 end, { desc = "DAP: Set Log Point" })
 
--- REPL - не нужна так как автоматически открывается во время отладки
+-- REPL - is not needed as it is automatically opened during debugging
 -- map("n", "<leader>dr", dap.repl.open, { desc = "DAP: Open REPL" })
 
 -- UI виджеты
@@ -114,3 +115,45 @@ end, { desc = "DAP: Frames" })
 map("n", "<leader>ds", function()
   dapui.centered_float(dapui_widget.scopes)
 end, { desc = "DAP: Scopes" })
+
+------------------------------------------------------------------
+-- Hotkeys for GitSigns
+------------------------------------------------------------------
+
+map("n", "<leader>ghs", gitsigns.stage_hunk, { desc = "GitSigns stage_hunk" })
+map("n", "<leader>ghr", gitsigns.reset_hunk, { desc = "GitSigns reset_hunk" })
+
+map("v", "<leader>ghs", function()
+  gitsigns.stage_hunk { vim.fn.line ".", vim.fn.line "v" }
+end, { desc = "GitSigns stage_hunk" })
+
+map("v", "<leader>ghr", function()
+  gitsigns.reset_hunk { vim.fn.line ".", vim.fn.line "v" }
+end, { desc = "GitSigns reset_hunk" })
+
+map("n", "<leader>ghS", gitsigns.stage_buffer, { desc = "GitSigns stage_buffer" })
+map("n", "<leader>ghR", gitsigns.reset_buffer, { desc = "GitSigns reset_buffer" })
+map("n", "<leader>ghp", gitsigns.preview_hunk, { desc = "GitSigns preview_hunk" })
+map("n", "<leader>ghi", gitsigns.preview_hunk_inline, { desc = "GitSigns preview_hunk_inline" })
+
+map("n", "<leader>ghb", function()
+  gitsigns.blame_line { full = true }
+end, { desc = "GitSigns blame_line" })
+
+map("n", "<leader>ghd", gitsigns.diffthis, { desc = "GitSigns diffthis" })
+
+map("n", "<leader>ghD", function()
+  gitsigns.diffthis "~"
+end, { desc = "GitSigns diffthis ~" })
+
+map("n", "<leader>ghQ", function()
+  gitsigns.setqflist "all"
+end, { desc = "GitSigns setqflist all" })
+map("n", "<leader>ghq", gitsigns.setqflist, { desc = "GitSigns setqflist" })
+
+-- Toggles
+map("n", "<leader>gtb", gitsigns.toggle_current_line_blame, { desc = "GitSigns toggle_current_line_blame" })
+map("n", "<leader>gtw", gitsigns.toggle_word_diff, { desc = "GitSigns toggle_word_diff" })
+
+-- Text object
+map({ "o", "x" }, "gih", gitsigns.select_hunk, { desc = "GitSigns select_hunk" })
