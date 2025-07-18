@@ -49,13 +49,6 @@ M.ui = {
       fg = "none",
     },
   },
-  cmp = {
-    lspkind_text = true,
-    style = "default", -- default/flat_light/flat_dark/atom/atom_colored
-    format_colors = {
-      lsp = true,
-    },
-  },
 }
 
 return M

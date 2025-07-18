@@ -28,6 +28,15 @@ return {
         name = "codeium",
       },
     },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+    },
+    config = function()
+      require "configs.cmp"
+    end,
   },
   {
     "kdheepak/lazygit.nvim",
@@ -80,17 +89,17 @@ return {
       max_height = 15,
     },
   },
-  {
-    "christoomey/vim-tmux-navigator",
-    lazy = false,
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
-    },
-  },
+  -- {
+  --   "christoomey/vim-tmux-navigator",
+  --   lazy = false,
+  --   cmd = {
+  --     "TmuxNavigateLeft",
+  --     "TmuxNavigateDown",
+  --     "TmuxNavigateUp",
+  --     "TmuxNavigateRight",
+  --     "TmuxNavigatePrevious",
+  --   },
+  -- },
   {
     "stevearc/dressing.nvim",
     lazy = false,
