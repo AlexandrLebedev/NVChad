@@ -80,6 +80,17 @@ lspconfig.intelephense.setup {
   end,
 }
 
+lspconfig.phpactor.setup {
+  cmd = { "phpactor", "language-server", "-vvv" },
+  on_attach = function(client)
+    client.server_capabilities.hoverProvider = false
+    client.server_capabilities.documentSymbolProvider = false
+    client.server_capabilities.referencesProvider = false
+    client.server_capabilities.completionProvider = false
+    client.server_capabilities.documentFormattingProvider = false
+  end,
+}
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "php",
   callback = function()

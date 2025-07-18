@@ -50,6 +50,10 @@ map("i", "jk", "<ESC>")
 
 map("n", "<leader>v", toggle_vista, { desc = "Toggle Vista" })
 map("n", "<leader>sd", toggle_dadbod, { desc = "Toggle DBUI" })
+map("n", "<leader>ca", function()
+  vim.lsp.buf.code_action()
+end, { desc = "Show code action" })
+-- lua vim.lsp.buf.code_action()
 
 map("n", "<Left>", function()
   async.run(function()
