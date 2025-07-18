@@ -1,3 +1,5 @@
+-- setings for Formatters
+
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
@@ -7,6 +9,7 @@ local options = {
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
     javascriptreact = { "prettier" },
+    go = { "goimports" },
   },
 
   format_on_save = {
