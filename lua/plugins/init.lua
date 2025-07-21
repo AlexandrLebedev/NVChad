@@ -180,6 +180,19 @@ return {
       require("nvim-ts-autotag").setup()
     end,
   },
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      current_line_blame = true,
+      preview_config = {
+        border = "rounded",
+        style = "minimal",
+        relative = "cursor",
+        row = 0,
+        col = 1,
+      },
+    },
+  },
   -- These are some examples, uncomment them if you want to see them work!
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
