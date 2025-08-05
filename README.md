@@ -105,6 +105,9 @@ Installation and a more detailed description of what it is can be seen at this l
 > *described above.  For now, I will not go directly into LazyGit, but*
 > *will continue to refine my configuration.*
 
+## Working environment
+I recently started using [tmux](https://github.com/tmux/tmux/wiki). I saved the configuration that works best for me in the ```workspace-configs``` folder.
+
 ## Debuging for php
 >_Instructions in process
 
