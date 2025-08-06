@@ -157,3 +157,12 @@ map("n", "<leader>gtw", gitsigns.toggle_word_diff, { desc = "GitSigns toggle_wor
 
 -- Text object
 map({ "o", "x" }, "gih", gitsigns.select_hunk, { desc = "GitSigns select_hunk" })
+
+-- Terminal
+map("n", "<leader>-", function()
+  require("nvchad.term").new { pos = "sp" }
+end, { desc = "terminal new horizontal term" })
+
+map("n", "<leader>|", function()
+  require("nvchad.term").new { pos = "vsp" }
+end, { desc = "terminal new vertical term" })
