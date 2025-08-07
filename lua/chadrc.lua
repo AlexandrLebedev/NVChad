@@ -24,7 +24,7 @@ M.base46 = {
 
   hl_override = {
     NormalFloat = { bg = "none" },
-    FloatBorder = { fg = "#565f89" },
+    Visual = { bg = "#565f89" },
   },
 }
 
