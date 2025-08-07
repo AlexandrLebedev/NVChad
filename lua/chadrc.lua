@@ -18,12 +18,22 @@ M.nvdash = {
   },
 }
 
+M.base46 = {
+  theme = "carbonfox",
+  transparency = true,
+
+  hl_override = {
+    NormalFloat = { bg = "none" },
+    FloatBorder = { fg = "#565f89" },
+  },
+}
+
 M.ui = {
-  theme = "Carbonfox",
   statusline = {
     theme = "vscode_colored",
   },
-  -- Добавил часы к табам что бы легче было смотреть время в полноэкранном режиме
+  telescope = { style = "bordered" },
+
   tabufline = {
     order = { "treeOffset", "buffers", "tabs", "clock", "btns" },
 
@@ -31,22 +41,6 @@ M.ui = {
       clock = function()
         return "  " .. os.date "%H:%M" .. " "
       end,
-    },
-  },
-  hl_override = {
-    Comment = { italic = true },
-    ["@comment"] = { italic = true },
-    DiffChange = {
-      bg = "#464414",
-      fg = "none",
-    },
-    DiffAdd = {
-      bg = "#103507",
-      fg = "none",
-    },
-    DiffRemoved = {
-      bg = "#461414",
-      fg = "none",
     },
   },
 }
