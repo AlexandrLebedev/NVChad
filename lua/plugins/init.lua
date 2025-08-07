@@ -146,6 +146,7 @@ return {
         "phpactor",
         "eslint_d",
         "json-lsp",
+        "twiggy-language-server",
       },
     },
   },
@@ -192,6 +193,16 @@ return {
         col = 1,
       },
     },
+  },
+  {
+    "sphamba/smear-cursor.nvim",
+    event = "VeryLazy",
+    opts = require "configs.smear-cursor",
+  },
+  {
+    "karb94/neoscroll.nvim",
+    event = "VeryLazy",
+    opts = {},
   },
   -- These are some examples, uncomment them if you want to see them work!
   -- test new blink
