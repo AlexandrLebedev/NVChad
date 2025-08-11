@@ -166,3 +166,18 @@ end, { desc = "terminal new horizontal term" })
 map("n", "<leader>|", function()
   require("nvchad.term").new { pos = "vsp" }
 end, { desc = "terminal new vertical term" })
+
+-- Vim shortcut
+
+-- Copy all text inside ${...} to clipboard
+map("n", "<leader>cb", function()
+  local lines = vim.fn.getline(1, "$")
+  ---@cast lines string[]
+  local result = {}
+  for _, line in ipairs(lines) do
+    for match in line:gmatch "%${([^}]+)}" do
+      table.insert(result, match)
+    end
+  end
+  vim.fn.setreg("+", table.concat(result, "\n"))
+end, { desc = "Copy all text inside ${...} to clipboard" })
