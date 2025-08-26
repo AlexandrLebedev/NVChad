@@ -167,6 +167,13 @@ map("n", "<leader>|", function()
   require("nvchad.term").new { pos = "vsp" }
 end, { desc = "terminal new vertical term" })
 
+-- LSP
+map("n", "<leader>cd", function()
+  vim.lsp.buf.hover {
+    border = "rounded",
+  }
+end, { desc = "LSP: Show documentation" })
+
 -- Vim shortcut
 
 -- Copy all text inside ${...} to clipboard
