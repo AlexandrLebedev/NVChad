@@ -204,6 +204,11 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
   -- These are some examples, uncomment them if you want to see them work!
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
