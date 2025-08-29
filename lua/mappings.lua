@@ -176,6 +176,9 @@ end, { desc = "LSP: Show documentation" })
 
 -- Vim shortcut
 
+-- Inc Rename
+map("n", "<leader>rrn", ":IncRename", { desc = "Inc Rename" })
+
 -- Copy all text inside ${...} to clipboard
 map("n", "<leader>cb", function()
   local lines = vim.fn.getline(1, "$")
