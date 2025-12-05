@@ -19,12 +19,28 @@ M.nvdash = {
 }
 
 M.base46 = {
-  theme = "carbonfox",
+  theme = "github_dark",
   transparency = true,
 
   hl_override = {
-    NormalFloat = { bg = "none" },
-    Visual = { bg = "#565f89" },
+    -- NormalFloat отвечает за текст и фон плавающих окон (LSP hover, signature help)
+    NormalFloat = {
+      fg = "#c0c0c0", -- Светло-серый цвет текста
+      bg = "#1e222a", -- Темный фон (подбери под свою тему, если нужно)
+    },
+
+    -- FloatBorder отвечает за рамку этого окна
+    FloatBorder = {
+      fg = "#565f89",
+      bg = "#1e222a",
+    },
+
+    -- LspSignatureActiveParameter отвечает за подсветку активного аргумента (на котором сейчас курсор)
+    LspSignatureActiveParameter = {
+      fg = "#E5C07B", -- Например, желтый/золотой
+      bold = true,
+      bg = "NONE",
+    },
   },
 }
 
