@@ -1,26 +1,30 @@
 local configs = require "nvchad.configs.lspconfig"
-local lspconfig = require "lspconfig"
 
 local servers = { "html", "cssls", "jsonls", "clangd", "gopls" }
 
 for _, server_name in ipairs(servers) do
-  lspconfig[server_name].setup {
+  vim.lsp.config[server_name] = {
     on_attach = configs.on_attach,
     capabilities = configs.capabilities,
   }
+
+  vim.lsp.enable(server_name)
 end
 
 ---
 
-lspconfig.eslint.setup {
-  on_attach = configs.on_attach,
+vim.lsp.config["eslint"] = {
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+    configs.on_attach(client, bufnr)
+  end,
   capabilities = configs.capabilities,
-  cmd = { "eslint_d", "--stdin" },
-  settings = {},
-  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 }
 
-lspconfig.ts_ls.setup {
+vim.lsp.config["ts_ls"] = {
   on_attach = configs.on_attach,
   capabilities = configs.capabilities,
   init_options = {
@@ -51,7 +55,7 @@ lspconfig.ts_ls.setup {
 -- }
 
 -- Настройка PHP (intelephense)
-lspconfig.intelephense.setup {
+vim.lsp.config["intelephense"] = {
   on_attach = configs.on_attach,
   capabilities = configs.capabilities,
   filetypes = { "php" },
@@ -80,13 +84,13 @@ lspconfig.intelephense.setup {
   end,
 }
 
-lspconfig.phpactor.setup {
+vim.lsp.config["phpactor"] = {
   cmd = { "phpactor", "language-server", "-vvv" },
   on_attach = function(client)
     client.server_capabilities.hoverProvider = false
     client.server_capabilities.documentSymbolProvider = false
     client.server_capabilities.referencesProvider = false
-    client.server_capabilities.completionProvider = false
+    --    client.server_capabilities.completionProvider = false
     client.server_capabilities.documentFormattingProvider = false
   end,
 }
