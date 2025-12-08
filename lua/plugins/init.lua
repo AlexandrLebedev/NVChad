@@ -214,6 +214,22 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+  {
+    "kndndrj/nvim-dbee",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    event = "VeryLazy",
+    build = function()
+      -- Install tries to automatically detect the install method.
+      -- if it fails, try calling it with one of these parameters:
+      --    "curl", "wget", "bitsadmin", "go"
+      require("dbee").install()
+    end,
+    config = function()
+      require("dbee").setup(--[[optional config]])
+    end,
+  },
   -- These are some examples, uncomment them if you want to see them work!
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
