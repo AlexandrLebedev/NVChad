@@ -1,6 +1,6 @@
 local configs = require "nvchad.configs.lspconfig"
 
-local servers = { "html", "cssls", "jsonls", "clangd", "gopls" }
+local servers = { "html", "cssls", "jsonls", "clangd", "gopls", "protols" }
 
 for _, server_name in ipairs(servers) do
   vim.lsp.config[server_name] = {

@@ -46,7 +46,7 @@ end
 -- Main hotkeys
 ------------------------------------------------------------------
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
+-- map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 map("n", "<leader>v", toggle_vista, { desc = "Toggle Vista" })

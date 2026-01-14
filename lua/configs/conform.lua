@@ -10,6 +10,7 @@ local options = {
     typescriptreact = { "prettier" },
     javascriptreact = { "prettier" },
     go = { "goimports", "staticcheck" },
+    proto = { "buf" },
   },
 
   format_on_save = {

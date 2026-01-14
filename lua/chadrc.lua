@@ -23,24 +23,25 @@ M.base46 = {
   transparency = true,
 
   hl_override = {
-    -- NormalFloat отвечает за текст и фон плавающих окон (LSP hover, signature help)
     NormalFloat = {
-      fg = "#c0c0c0", -- Светло-серый цвет текста
-      bg = "#1e222a", -- Темный фон (подбери под свою тему, если нужно)
+      fg = "#c0c0c0",
+      bg = "#1e222a",
     },
 
-    -- FloatBorder отвечает за рамку этого окна
     FloatBorder = {
       fg = "#565f89",
       bg = "#1e222a",
     },
 
-    -- LspSignatureActiveParameter отвечает за подсветку активного аргумента (на котором сейчас курсор)
     LspSignatureActiveParameter = {
-      fg = "#E5C07B", -- Например, желтый/золотой
+      fg = "#E5C07B",
       bold = true,
       bg = "NONE",
     },
+
+    ["@string"] = { fg = "#98c379" },
+    ["@variable"] = { fg = "#bd93f9" },
+    ["@number"] = { fg = "#d19a66" },
   },
 }
 
