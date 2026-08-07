@@ -17,25 +17,37 @@ return {
   --       -- TODO Make dinamyc connect
   --       mysql = "docker-compose exec -T mysql",
   --     }
-
   --     vim.g.db_ui_use_nerd_fonts = 1
   --   end,
   -- },
   {
-    "hrsh7th/nvim-cmp",
-    opts = {
-      sources = {
-        name = "codeium",
-      },
+    "tpope/vim-dadbod",
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = {
+      { "tpope/vim-dotenv", lazy = true },
     },
+    cmd = {
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
+    },
+    init = function()
+      vim.g.db_ui_use_nerd_fonts = 1
+      vim.g.db_ui_show_database_icon = 1
+    end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "kristijanhusak/vim-dadbod-completion",
     },
-    config = function()
-      require "configs.cmp"
+    opts = function()
+      return require "configs.cmp"
     end,
   },
   {
@@ -149,8 +161,8 @@ return {
         "twiggy-language-server",
         "buf",
         "protols",
-        "sqls",
         "sqlfluff",
+        "pyright",
       },
     },
   },
@@ -168,6 +180,9 @@ return {
         "go",
         "php",
         "json",
+        "sql",
+        "vue",
+        "python",
       },
     },
   },
@@ -218,22 +233,22 @@ return {
     event = "VeryLazy",
     opts = {},
   },
-  {
-    "kndndrj/nvim-dbee",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    },
-    event = "VeryLazy",
-    build = function()
-      -- Install tries to automatically detect the install method.
-      -- if it fails, try calling it with one of these parameters:
-      --    "curl", "wget", "bitsadmin", "go"
-      require("dbee").install()
-    end,
-    config = function()
-      require("dbee").setup(--[[optional config]])
-    end,
-  },
+  -- {
+  --   "kndndrj/nvim-dbee",
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --   },
+  --   event = "VeryLazy",
+  --   build = function()
+  --     -- Install tries to automatically detect the install method.
+  --     -- if it fails, try calling it with one of these parameters:
+  --     --    "curl", "wget", "bitsadmin", "go"
+  --     require("dbee").install()
+  --   end,
+  --   config = function()
+  --     require("dbee").setup(--[[optional config]])
+  --   end,
+  -- },
   -- These are some examples, uncomment them if you want to see them work!
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
