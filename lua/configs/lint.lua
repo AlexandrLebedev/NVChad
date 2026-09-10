@@ -6,6 +6,7 @@ lint.linters_by_ft = {
   typescriptreact = { "eslint_d" },
   javascriptreact = { "eslint_d" },
   proto = { "buf_lint" },
+  -- sql = { "sqlfluff" },
 }
 
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -16,3 +17,10 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
     lint.try_lint()
   end,
 })
+-- local sqlfluff = lint.linters.sqlfluff
+-- sqlfluff.args = {
+--   "lint",
+--   "--format=json",
+--   "--dialect=postgres",
+--   "-",
+-- }

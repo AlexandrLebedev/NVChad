@@ -11,12 +11,19 @@ local options = {
     javascriptreact = { "prettier" },
     go = { "goimports", "staticcheck" },
     proto = { "buf" },
+    sql = { "sqlfluff" },
   },
 
   format_on_save = {
     -- These options will be passed to conform.format()
     timeout_ms = 500,
     lsp_fallback = true,
+  },
+
+  formatters = {
+    sqlfluff = {
+      args = { "fix", "--dialect", "postgres", "-" },
+    },
   },
 }
 
